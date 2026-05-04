@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+    <!-- IH#6: NEXT STEPS - (Fixed Typo: Analyzing) -->
+    <h2 class="mb-4 text-center">Analyzing Application...</h2>
+    
+    <!-- IH#2: COSTS - Progress bar visual -->
+<div class="progress mb-4" style="height: 30px; position: relative;">
+    <div class="progress-bar bg-success" role="progressbar" 
+         style="width: {{ score }}%;" 
+         aria-valuenow="{{ score }}" aria-valuemin="0" aria-valuemax="100">
+    </div>
+    <!-- Overlay the text so it's always readable -->
+    <small class="justify-content-center d-flex w-100 position-absolute align-items-center h-100 font-weight-bold">
+        Match Score: {{ score }}%
+    </small>
+</div>
+
+    <h4>Missing Keywords:</h4>
+    <ul class="list-group mb-4">
+        {% for word in missing %}
+            <li class="list-group-item list-group-item-warning">{{ word }}</li>
+        {% endfor %}
+    </ul>
+
+    <!-- IH#5: BACKTRACK -->
+    <a href="/" class="btn btn-outline-secondary">← Backtrack / Start Over</a>
+{% endblock %}
